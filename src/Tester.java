@@ -17,7 +17,7 @@ public class Tester
         
         for(int count = 0; count < 9000; count++)
         {
-            hG.addEdge(new Hyperedge(new Annotation(), gen.nextInt(20), gen.nextInt(20), gen.nextInt(20), gen.nextInt(20)));
+            hG.addEdge(Utilities.createRandomEdge(1000));
         }
         
         hG.getPebbledHypergraph();
