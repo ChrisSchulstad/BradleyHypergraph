@@ -5,24 +5,28 @@ public class PebbledHyperedge
     public Annotation annot;
     public ArrayList<Integer> sourceNodes;
     public int targetNode;
-    public boolean active;
+    public boolean pebbled;
     
     public PebbledHyperedge(ArrayList<Integer> sources, int target, Annotation theAnnot)
     {
         sourceNodes = sources;
         targetNode = target;
         annot = theAnnot;
-        active = true;
+        pebbled = true;
     }
     
-    public void activate()
+    public void pebble()
     {
-        active = true;
+        pebbled = true;
     }
     
-    public void deactivate()
+    public void clearPebble()
     {
-        active = false;
+        pebbled = false;
+    }
+    
+    public boolean isPebbled(){
+    	return pebbled;
     }
     
     @Override
