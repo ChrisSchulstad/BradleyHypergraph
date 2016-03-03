@@ -50,10 +50,10 @@ public class Hypergraph
     }
     
     //return integer-based representation of hypergraph
+    ArrayList<PebbledHypernode> pebbledNodes = new ArrayList<PebbledHypernode>(vertices.size());
     public PebbledHypergraph getPebbledHypergraph() throws Exception
     {
         //create nodes
-        ArrayList<PebbledHypernode> pebbledNodes = new ArrayList<PebbledHypernode>(vertices.size());
         for (int v = 0; v < vertices.size(); v++)
         {
             pebbledNodes.add(v, vertices.get(v).createPebbledNode());
