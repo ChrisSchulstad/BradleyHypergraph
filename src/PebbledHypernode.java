@@ -26,6 +26,14 @@ public class PebbledHypernode
         active = false;
     }
 
+    public boolean isPebbled(){
+    	return active;
+    }
+    
+    public int getID(){
+    	return id;
+    }
+    
     public boolean addEdge(PebbledHyperedge newEdge) throws Exception
     {
         if(!newEdge.sourceNodes.contains(this.id)) throw new Exception("Hyperedge: " + newEdge.toString() + "is not incident to " + this.id);
