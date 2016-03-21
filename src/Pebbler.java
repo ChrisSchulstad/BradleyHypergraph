@@ -1,4 +1,6 @@
 
+package hypergraph;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
@@ -27,19 +29,18 @@ public class Pebbler{
 
         // multimap
         // A static list of edges that can be processed using means other than a fixpoint analysis.
-        public HyperEdgeMultiMap<Hypergraph.EdgeAnnotation> forwardPebbledEdges { get; private set; }
-        public HyperEdgeMultiMap<Hypergraph.EdgeAnnotation> backwardPebbledEdges { get; private set; }
+        public HyperedgeMultiMap forwardPebbledEdges;
+        public HyperedgeMultiMap backwardPebbledEdges;
 
-        public Pebbler(Hypergraph.Hypergraph<GeometryTutorLib.ConcreteAST.GroundedClause, Hypergraph.EdgeAnnotation> graph,
-                       PebblerHypergraph<ConcreteAST.GroundedClause, Hypergraph.EdgeAnnotation> pGraph)
+        public Pebbler(Hypergraph graph, PebbledHypergraph pGraph)
         {
         	
             this.graph = graph;
             this.pebblerGraph = pGraph;
             
             //Multimap
-            forwardPebbledEdges = new HyperEdgeMultiMap<Hypergraph.EdgeAnnotation>(pGraph.vertices.Length);
-            backwardPebbledEdges = new HyperEdgeMultiMap<Hypergraph.EdgeAnnotation>(pGraph.vertices.Length);
+            forwardPebbledEdges = new HyperedgeMultiMap(pGraph.nodes.size());
+            backwardPebbledEdges = new HyperedgeMultiMap(pGraph.nodes.size());
 
             //Multimap
             forwardPebbledEdges.SetOriginalHypergraph(graph);
@@ -184,7 +185,7 @@ public class Pebbler{
         // Given a node, pebble the reachable parts of the graph (in the forward direction)
         // We pebble in a breadth first manner
         // 
-        private void ForwardTraversal(HyperEdgeMultiMap<Annotation> edgeDatabase, ArrayList<Integer> nodesToPebble){
+        private void ForwardTraversal(HyperedgeMultiMap edgeDatabase, ArrayList<Integer> nodesToPebble){
         	
             ArrayList<Integer> worklist = new ArrayList<Integer>();
             Collections.copy(worklist, nodesToPebble);
@@ -210,7 +211,7 @@ public class Pebbler{
                 				
 		                    // Success, we have an edge
 		                    // Construct a static set of pebbled hyperedges for problem construction
-		                	edgeDatabase.Put(currentEdge);
+		                	edgeDatabase.putUnchecked(currentEdge);
 		
 		                    // Add this node to the worklist to percolate further
 		                    if (!worklist.contains(currentEdge.targetNode)){
