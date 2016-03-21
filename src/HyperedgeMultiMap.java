@@ -18,6 +18,11 @@ public class HyperedgeMultiMap
         table = new ArrayList[TABLE_SIZE];
     }
     
+    public void SetOriginalHypergraph(Hypergraph originalGraph)
+    {
+        graph = originalGraph;
+    }
+    
     public ArrayList<PebbledHyperedge> collectAllEdges()
     {
         ArrayList<PebbledHyperedge> edges = new ArrayList<PebbledHyperedge>();
