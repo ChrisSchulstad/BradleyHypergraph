@@ -4,8 +4,10 @@ public class Hypernode
 {
     public Object data;
     public int id;
+
     //edges in which this node is a source
     public ArrayList<Hyperedge> outEdges;
+    
     //edges in which this node is the target
     public ArrayList<Hyperedge> inEdges;
     

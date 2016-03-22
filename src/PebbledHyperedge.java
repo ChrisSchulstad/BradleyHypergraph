@@ -24,10 +24,8 @@ public class PebbledHyperedge
     {
         pebbled = false;
     }
-    
-    public boolean isPebbled(){
-    	return pebbled;
-    }
+
+    public boolean isPebbled() { return pebbled; }
     
     @Override
     public String toString()

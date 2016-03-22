@@ -29,8 +29,10 @@ public class Hyperedge
     {
         if(!(o instanceof Hyperedge)) return false;
         Hyperedge that = (Hyperedge) o;
+        
         //compare target
         if(that.targetNode != this.targetNode) return false;
+        
         //compare sources
         for(Integer thisInt: this.sourceNodes)
         {

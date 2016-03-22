@@ -7,20 +7,33 @@ public class Tester
     public static void main(String[] args) throws Exception
     {
         Hypergraph hG = new Hypergraph();
+        final int NUM_NODES = 10;
+        final int NUM_EDGES = 10;
         
-        for(int count = 0; count < 1000; count++)
+        for(int count = 0; count < NUM_NODES; count++)
         {
             hG.addNode(new Hypernode(count ,count));
         }
         
-        Random gen = new Random();
-        
-        for(int count = 0; count < 9000; count++)
+        for(int count = 0; count < NUM_EDGES; count++)
         {
-            hG.addEdge(Utilities.createRandomEdge(1000));
+            hG.addEdge(Utilities.createRandomEdge(NUM_NODES));
         }
+                
+        PebbledHypergraph pGraph = hG.getPebbledHypergraph();
         
-        hG.getPebbledHypergraph();
+        System.out.println(pGraph);
+                
+        Pebbler pebbler = new Pebbler(hG, pGraph);
+        
+        ArrayList<Integer> nodes = new ArrayList<>();
+
+        nodes.add(1);
+        nodes.add(2);
+        nodes.add(3);
+        
+        pebbler.pebble(nodes);
+        
+        HyperedgeMultiMap map = pebbler.getForwardEdges();
     }
-    
 }
