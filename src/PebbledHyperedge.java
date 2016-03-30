@@ -12,7 +12,7 @@ public class PebbledHyperedge
         sourceNodes = sources;
         targetNode = target;
         annot = theAnnot;
-        pebbled = true;
+        pebbled = false;
     }
     
     public void pebble()
@@ -24,10 +24,8 @@ public class PebbledHyperedge
     {
         pebbled = false;
     }
-    
-    public boolean isPebbled(){
-    	return pebbled;
-    }
+
+    public boolean isPebbled() { return pebbled; }
     
     @Override
     public String toString()
