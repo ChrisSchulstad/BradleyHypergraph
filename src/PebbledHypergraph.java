@@ -22,16 +22,20 @@ public class PebbledHypergraph
     
     //*****************************************************
     //loop over source nodes to see if each are pebbled
-    public boolean isFullyPebbled(PebbledHyperedge edge){
-    	if (edge.isPebbled()){
-    		return true;
-    	}
-    	for(Integer src : edge.sourceNodes){
-    		if (!nodes.get(src).isPebbled()){
+    public boolean isFullyPebbled(PebbledHyperedge edge)
+    {
+    	if (edge.isPebbled()) return true;
+
+    	for(Integer src : edge.sourceNodes)
+    	{
+    		if (!nodes.get(src).isPebbled())
+    		{
     			return false;
     		}
     	}
+
     	edge.pebble();
+
     	return true;
     }
     
@@ -50,11 +54,12 @@ public class PebbledHypergraph
         
         for(PebbledHypernode currNode: nodes)
         {
-            graphS += "Vertex " + currNode.id + ": ";
-            graphS += "(data: " + currNode.data + ", ";
+            graphS += "Vertex " + currNode.id + "(" + currNode.isPebbled() + "): ";
+            graphS += "(data: " + currNode.data + ")";
+            graphS += " edges: ";
             for(PebbledHyperedge currEdge: currNode.outEdges)
             {
-                graphS += "edges: " + currEdge.toString() + ", ";
+                graphS += currEdge.toString() + ", ";
             }
             graphS += ") ";
         }
