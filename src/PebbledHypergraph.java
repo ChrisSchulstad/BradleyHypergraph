@@ -55,11 +55,11 @@ public class PebbledHypergraph
         for(PebbledHypernode currNode: nodes)
         {
             graphS += "Vertex " + currNode.id + "(" + currNode.isPebbled() + "): ";
-            graphS += "(data: " + currNode.data + ", ";
-            graphS += "(data: " + currNode.data + ", ";
+            graphS += "(data: " + currNode.data + ")";
+            graphS += " edges: ";
             for(PebbledHyperedge currEdge: currNode.outEdges)
             {
-                graphS += "edges: " + currEdge.toString() + ", ";
+                graphS += currEdge.toString() + ", ";
             }
             graphS += ") ";
         }
