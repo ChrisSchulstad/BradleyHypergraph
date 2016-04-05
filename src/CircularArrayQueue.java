@@ -1,34 +1,40 @@
-public class CircularArrayQueue<T>{
-	
+public class CircularArrayQueue<T>
+{	
 	private T[] queueArray;
 	private int front;
 	private int rear;
 	private int n;
 	
-	public CircularArrayQueue(){
+	@SuppressWarnings("unchecked")
+    public CircularArrayQueue()
+	{
 		n = 5;
 		queueArray = (T[])new Object[n];
 		front = rear = 0;
 	}
 	
-	public void enqueue(Object element) {
+	@SuppressWarnings("unchecked")
+    public void enqueue(Object element)
+    {
 		int s = size();
-		if (s == n - 1){
-			resize();
-		}
+		if (s == n - 1) resize();
+
 		queueArray[rear++] = (T)element;
-		if(rear == n){
-			rear = 0;
-		}
+		if(rear == n) rear = 0;
 	}
 	
-	private void resize(){
+	@SuppressWarnings("unchecked")
+    private void resize()
+	{
 		n *= 2;
 		int s = size();
-		int lastIndex = s +1;
+		int lastIndex = s + 1;
+
 		T[]array = (T[])new Object[n];
+		
 		int i = 0;
-		while(s > 0){
+		while(s > 0)
+		{
 			s--;
 			array[i++] = queueArray[front++];
 			if(front == lastIndex){
@@ -40,33 +46,32 @@ public class CircularArrayQueue<T>{
 		queueArray = array;
 	}
 	
-	public T dequeue() {
+	public T dequeue()
+    {
 		if (isEmpty()) return null;
+
 		T x = queueArray[front];
-		queueArray[front] = null;
-		front++;
-		if (front == n)front = 0;
+		
+		queueArray[front++] = null;
+		
+		if (front == n) front = 0;
+
 		return x;
 	}
 
-	public Object first() {
-		return queueArray[front];
-	}
-
-	public boolean isEmpty() {
-		return front == rear;
-	}
-
-	public int size() {
-		return (n - front + rear) % n;
-	}
+	public Object first() { return queueArray[front]; }
+	public boolean isEmpty() { return front == rear; }
+	public int size() { return (n - front + rear) % n; }
 	
-	public String toString(){
+	public String toString()
+	{
 		String retString = "";
-		for (int i = 0; i < n; i++ ){
+
+		for (int i = 0; i < n; i++ )
+		{
 			retString += "Index " + i + ": " +  queueArray[i] + "\n";
 		}
+		
 		return retString;
 	}
-
 }

@@ -5,9 +5,9 @@ public class Utilities
 {
     public static final boolean DEBUG = true;
     
-    public static ArrayList genSubset(int size, int low, int high)
+    public static ArrayList<Integer> genSubset(int size, int low, int high)
     {
-        ArrayList ary = new ArrayList();
+        ArrayList<Integer> ary = new ArrayList<>();
         int count = 0;
         //if seed set, all lists of sources are the same
         Random gen = new Random();
