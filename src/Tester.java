@@ -8,7 +8,7 @@ public class Tester
     {
         Hypergraph hG = new Hypergraph();
         final int NUM_NODES = 10;
-        final int NUM_EDGES = 10;
+        final int NUM_EDGES = 6;
         
         for(int count = 0; count < NUM_NODES; count++)
         {
@@ -28,12 +28,12 @@ public class Tester
         
         ArrayList<Integer> nodes = new ArrayList<>();
 
+        nodes.add(0);
         nodes.add(1);
-        nodes.add(2);
-        nodes.add(3);
         
         pebbler.pebble(nodes);
         
         HyperedgeMultiMap map = pebbler.getForwardEdges();
+        System.out.println(map);
     }
 }
