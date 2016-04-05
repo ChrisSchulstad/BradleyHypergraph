@@ -1,4 +1,4 @@
-﻿import java.util.ArrayList;
+import java.util.ArrayList;
 
 public class PathGenerator
 {
@@ -116,7 +116,12 @@ public class PathGenerator
             for (Path path : singletonMapToOriginalPaths[g])
             {
                 Path basePathCopy = new Path(basepath);
-                basePathCopy.append(edgeDatabase, path);
+                try {
+					basePathCopy.append(edgeDatabase, path);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
                 //memoizedPaths.put(basePathCopy);
                 singletonMapToNewPaths[g].add(basePathCopy);
                 genNewPaths = true;
@@ -173,7 +178,11 @@ public class PathGenerator
                     // that is, a given node was pushed into the path of the path. Hence, no need to append in this situation
                     if (path.getStartNodes().contains(singleton.getGoal()))
                     {
-                        pathCopy.append(edgeDatabase, singleton);
+                        try {
+							pathCopy.append(edgeDatabase, singleton);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
                     }
                     tmpMaximalPaths.add(pathCopy);
                 }
