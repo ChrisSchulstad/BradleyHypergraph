@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
@@ -74,8 +73,7 @@ public class Pebbler
     // 
     private void ForwardTraversal(HyperedgeMultiMap edgeDatabase, ArrayList<Integer> nodesToPebble)
     {
-        ArrayList<Integer> worklist = new ArrayList<Integer>();
-        Collections.copy(worklist, nodesToPebble);
+        ArrayList<Integer> worklist = nodesToPebble;
 
         // Pebble until the list is empty
         while (!worklist.isEmpty())
@@ -99,7 +97,8 @@ public class Pebbler
                         // Success, we have an edge
                         // Construct a static set of pebbled hyperedges for problem construction
                         edgeDatabase.putUnchecked(currentEdge);
-
+                        currentEdge.pebble();
+                        
                         // Add this node to the worklist to percolate further
                         if (!worklist.contains(currentEdge.targetNode))
                         {
