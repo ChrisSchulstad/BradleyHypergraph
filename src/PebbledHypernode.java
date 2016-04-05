@@ -16,7 +16,7 @@ public class PebbledHypernode
         data = theData;
         id = theId;
         outEdges = new ArrayList<PebbledHyperedge>();
-        active = true;
+        active = false;
     }
     
     public void activate() { active = true; }
