@@ -94,7 +94,7 @@ public class PathHashMap
 
     // Acquire a problem based on the goal only
     public ArrayList<Path> get(Path p) { return get(p.getGoal()); }
-
+ 
     //
     // Another option to acquire the pertinent problems
     //

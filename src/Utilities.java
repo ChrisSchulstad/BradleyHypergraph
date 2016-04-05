@@ -5,12 +5,10 @@ public class Utilities
 {
     public static final boolean DEBUG = true;
     
-    public static ArrayList<Integer> genSubset(int size, int low, int high)
+    public static ArrayList<Integer> genSubset(Random gen, int size, int low, int high)
     {
         ArrayList<Integer> ary = new ArrayList<>();
         int count = 0;
-        //if seed set, all lists of sources are the same
-        Random gen = new Random();
         
         while(count < size)
         {
@@ -25,14 +23,11 @@ public class Utilities
         return ary;
     }
     
-    public static Hyperedge createRandomEdge(int numNodes)
+    public static Hyperedge createRandomEdge(Random gen, int numNodes)
     {
-        //if seed set, all targets are the same
-        Random gen = new Random();
-        
         //to have random number of source nodes, put random generator as first parameter of genSubset
         //currently at size 3 subset of sources for simple testing
-        Hyperedge newEdge = new Hyperedge(new Annotation(), gen.nextInt(numNodes), Utilities.genSubset(3, 0, numNodes));
+        Hyperedge newEdge = new Hyperedge(new Annotation(), gen.nextInt(numNodes), Utilities.genSubset(gen, 3, 0, numNodes));
                                           //annotation,     target,                set of sources
         
         boolean success = true;
@@ -44,7 +39,7 @@ public class Utilities
                 break;
             }
         }
-        if (!success) newEdge = createRandomEdge(numNodes);
+        if (!success) newEdge = createRandomEdge(gen, numNodes);
         
         return newEdge;
     }

@@ -9,6 +9,8 @@ public class Hypergraph
     {
         vertices = new ArrayList<Hypernode>();
     }
+    
+    public int size() { return vertices.size(); }
  
     //trys to add a vertex to the graph and returns whether it was successful
     public boolean addNode(Object data)

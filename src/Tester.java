@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Tester 
 {
@@ -14,9 +15,12 @@ public class Tester
             hG.addNode(new Hypernode(count ,count));
         }
         
+        Random gen = new Random();
+        gen.setSeed(0); //if seed set, all targets are the same
+
         for(int count = 0; count < NUM_EDGES; count++)
         {
-            hG.addEdge(Utilities.createRandomEdge(NUM_NODES));
+            hG.addEdge(Utilities.createRandomEdge(gen, NUM_NODES));
         }
                 
         PebbledHypergraph pGraph = hG.getPebbledHypergraph();
@@ -28,11 +32,25 @@ public class Tester
         ArrayList<Integer> nodes = new ArrayList<>();
 
         nodes.add(0);
-        nodes.add(1);
+        nodes.add(2);
+        nodes.add(3);
         
         pebbler.pebble(nodes);
         
         HyperedgeMultiMap map = pebbler.getForwardEdges();
         System.out.println(map);
+        
+        int MAX_GIVENS = 3;
+        PathGenerator pathGen = new PathGenerator(hG);
+        PathHashMap pathMap = new PathHashMap(map, hG.size(), MAX_GIVENS);
+        
+        int GOAL_NODE = 4;
+        pathGen.GeneratePathBackwardToLeaves(pathMap, map, GOAL_NODE);
+        
+        // Write code to print all the paths (from the pathHashMap) with goal node 3.
+        for (Path path : pathMap.get(GOAL_NODE))
+        {
+            System.out.println(path);
+        }
     }
 }

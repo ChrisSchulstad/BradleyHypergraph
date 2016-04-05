@@ -89,7 +89,7 @@ public class Pebbler
             for(PebbledHyperedge currentEdge : pebblerGraph.getEdges(currentNodeIndex))
             {
                 //add code here to restrict user defined choices (A LA Geometry Axioms or Quest Actions)
-                if (!pebblerGraph.isFullyPebbled(currentEdge))
+                if (pebblerGraph.isFullyPebbled(currentEdge))
                 {
                     //*** Has the target of this edge been pebbled previously? Pebbled -> Pebbled means we have a backward edge
                     if(!pebblerGraph.isNodePebbled(currentEdge.targetNode)){
