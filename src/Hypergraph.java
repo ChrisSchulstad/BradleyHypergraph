@@ -20,7 +20,11 @@ public class Hypergraph
     public boolean addEdge(Hyperedge newEdge)
     {
         //for every vertex check if the edge already exists
-        if(this.hasEdge(newEdge)) return false;
+        if(hasEdge(newEdge)) 
+        {
+            return false;
+        }
+        
         
         //for every vertex in the edge's sourcenodes list, add the edge to out edges
         for(Integer currNode: newEdge.sourceNodes)
@@ -50,9 +54,9 @@ public class Hypergraph
     }
     
     //return integer-based representation of hypergraph
-    ArrayList<PebbledHypernode> pebbledNodes = new ArrayList<PebbledHypernode>(vertices.size());
     public PebbledHypergraph getPebbledHypergraph() throws Exception
     {
+        ArrayList<PebbledHypernode> pebbledNodes = new ArrayList<PebbledHypernode>(vertices.size());
         //create nodes
         for (int v = 0; v < vertices.size(); v++)
         {
