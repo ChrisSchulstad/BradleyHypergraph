@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -10,6 +9,7 @@ public class Utilities
     {
         ArrayList ary = new ArrayList();
         int count = 0;
+        //if seed set, all lists of sources are the same
         Random gen = new Random();
         
         while(count < size)
@@ -27,18 +27,25 @@ public class Utilities
     
     public static Hyperedge createRandomEdge(int numNodes)
     {
+        //if seed set, all targets are the same
         Random gen = new Random();
-        gen.setSeed(0);
         
-        Hyperedge newEdge = new Hyperedge(new Annotation(), gen.nextInt(numNodes), Utilities.genSubset(gen.nextInt(numNodes) + 1, 0, numNodes));
+        //to have random number of source nodes, put random generator as first parameter of genSubset
+        //currently at size 3 subset of sources for simple testing
+        Hyperedge newEdge = new Hyperedge(new Annotation(), gen.nextInt(numNodes), Utilities.genSubset(3, 0, numNodes));
+                                          //annotation,     target,                set of sources
         
+        boolean success = true;
         for(int source: newEdge.sourceNodes)
         {
             if(newEdge.targetNode == source)
             {
-                newEdge = createRandomEdge(numNodes);
+                success = false;
+                break;
             }
         }
+        if (!success) newEdge = createRandomEdge(numNodes);
+        
         return newEdge;
     }
     
