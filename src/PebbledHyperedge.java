@@ -12,7 +12,7 @@ public class PebbledHyperedge
         sourceNodes = sources;
         targetNode = target;
         annot = theAnnot;
-        pebbled = true;
+        pebbled = false;
     }
     
     public void pebble()
