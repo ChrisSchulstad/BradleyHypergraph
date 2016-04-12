@@ -31,10 +31,11 @@ public class Tester
         
         ArrayList<Integer> nodes = new ArrayList<>();
 
+        nodes.add(8);
+        nodes.add(5);
         nodes.add(0);
         nodes.add(2);
-        nodes.add(3);
-        
+
         pebbler.pebble(nodes);
         
         HyperedgeMultiMap map = pebbler.getForwardEdges();

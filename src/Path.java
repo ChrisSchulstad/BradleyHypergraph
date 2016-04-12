@@ -272,7 +272,7 @@ public class Path
 					this.addEdge(savedEdge);
 
 					// move target given to path: (1) remove from startNodes; (2) add to path 
-					this.startNodes.remove(savedEdge.targetNode);
+					this.startNodes.remove(new Integer(savedEdge.targetNode));
 					Utilities.addUnique(this.pathNodes, savedEdge.targetNode);
 				}
 			}
